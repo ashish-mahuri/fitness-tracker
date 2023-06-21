@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class CurrentTrainingComponent {
 
+  progress: number =0;
+  timer!: number;
+
+  constructor() {}
+
+  ngOnInit() {
+
+    this.timer = setInterval(() => {
+      this.progress = this.progress + 20;
+      if(this.progress >=100) {
+        clearInterval(this.timer);
+      }
+    }, 1000);
+  }
+
+  onStop() {
+    clearInterval(this.timer);
+  }
+
 }
